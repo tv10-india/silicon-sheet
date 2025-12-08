@@ -1,20 +1,25 @@
 import Link from "next/link";
+import Image from "next/image"; // <--- Import Image
 import { Github, Linkedin, Instagram, Send, Bug, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
-    // UPDATED: Border and Background are now theme-aware
     <footer className="relative z-10 w-full border-t border-slate-200 dark:border-white/5 bg-white/50 dark:bg-black/20 backdrop-blur-xl mt-auto">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           
           {/* COLUMN 1: Brand */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/30">
-                S
+            <div className="flex items-center gap-3 mb-4">
+              {/* LOGO REPLACEMENT */}
+              <div className="relative w-8 h-8">
+                <Image 
+                  src="/logo.png" 
+                  alt="Silicon Stories Logo" 
+                  fill 
+                  className="object-contain" 
+                />
               </div>
-              {/* UPDATED: Text color flips */}
               <span className="font-bold text-slate-900 dark:text-slate-100 text-xl tracking-tight">
                 Silicon Stories
               </span>
@@ -26,7 +31,6 @@ export default function Footer() {
 
           {/* COLUMN 2: Community */}
           <div>
-            {/* UPDATED: Headings are dark in light mode */}
             <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-4">Community</h3>
             <ul className="space-y-3">
               <li>

@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 import { AuroraBackground } from "../components/ui/AuroraBackground";
 import { Github, Chrome, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image"; // <--- Import Image
 import { cn } from "@/lib/utils";
 
 export default function LoginPage() {
@@ -20,21 +21,25 @@ export default function LoginPage() {
           Back to Home
         </Link>
 
-        {/* The Card: Adaptive Background & Border */}
+        {/* The Card */}
         <div className={cn(
           "p-8 rounded-3xl backdrop-blur-xl shadow-2xl transition-colors",
-          // Light Mode: White/50, Gray Border
           "bg-white/60 border border-slate-200",
-          // Dark Mode: Slate-900/50, White Border
           "dark:bg-slate-900/50 dark:border-white/10"
         )}>
           
           <div className="text-center mb-8">
-            <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center font-bold text-white text-2xl shadow-lg shadow-blue-500/30 mx-auto mb-4">
-              S
+            
+            {/* LOGO REPLACEMENT (Larger Size) */}
+            <div className="relative w-16 h-16 mx-auto mb-4">
+              <Image 
+                src="/logo.png" 
+                alt="Silicon Stories Logo" 
+                fill 
+                className="object-contain" 
+              />
             </div>
             
-            {/* Headlines: Adaptive Text Color */}
             <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Welcome Back</h1>
             <p className="text-slate-600 dark:text-slate-400 text-sm">
               Login to track your progress and sync your sheet across devices.
@@ -47,9 +52,7 @@ export default function LoginPage() {
               onClick={() => signIn("google", { callbackUrl: "/sheet" })}
               className={cn(
                 "w-full flex items-center justify-center gap-3 font-bold py-3.5 rounded-xl transition-all",
-                // Light: White button with border and shadow
                 "bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 hover:shadow-md",
-                // Dark: White button (standard google style)
                 "dark:bg-white dark:text-black dark:hover:bg-slate-200"
               )}
             >
@@ -62,9 +65,7 @@ export default function LoginPage() {
               onClick={() => signIn("github", { callbackUrl: "/sheet" })}
               className={cn(
                 "w-full flex items-center justify-center gap-3 font-bold py-3.5 rounded-xl transition-all border",
-                // Light: Dark Gray button
                 "bg-slate-900 text-white border-transparent hover:bg-slate-800 hover:shadow-lg",
-                // Dark: Slate-800 button
                 "dark:bg-slate-800 dark:text-white dark:border-slate-700 dark:hover:bg-slate-700"
               )}
             >
