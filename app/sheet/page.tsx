@@ -6,6 +6,7 @@ import { PrismaClient } from "@prisma/client";
 import { AuroraBackground } from "../components/ui/AuroraBackground";
 import MockInterviewModal from "../components/MockInterviewModal";
 import { Terminal } from "lucide-react";
+export const dynamic = "force-dynamic";
 
 const prisma = new PrismaClient();
 
