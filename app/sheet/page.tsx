@@ -6,9 +6,10 @@ import { PrismaClient } from "@prisma/client";
 import { AuroraBackground } from "../components/ui/AuroraBackground";
 import MockInterviewModal from "../components/MockInterviewModal";
 import { Terminal } from "lucide-react";
+import prisma from "@/lib/prisma";
+
 export const dynamic = "force-dynamic";
 
-const prisma = new PrismaClient();
 
 export default async function SheetPage() {
   const session = await auth();
