@@ -6,6 +6,7 @@ export type Problem = {
   link: string;
   videoUrl?: string;
   isSilicon100: boolean; // TRUE if it belongs in the 'Review Mode'
+  isIron1000?: boolean;
 };
 
 export const problems: Problem[] = [
@@ -18,6 +19,8 @@ export const problems: Problem[] = [
     link: "https://leetcode.com/problems/two-sum/",
     videoUrl: "https://youtu.be/UXDSeD9mN-k", // Example Solution
     isSilicon100: true, // Must do
+    isIron1000: true,
+    
   },
   {
     id: "best-time-to-buy-and-sell-stock",
@@ -26,6 +29,7 @@ export const problems: Problem[] = [
     topic: "Arrays",
     link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "contains-duplicate",
@@ -34,6 +38,7 @@ export const problems: Problem[] = [
     topic: "Arrays",
     link: "https://leetcode.com/problems/contains-duplicate/",
     isSilicon100: false,
+    isIron1000: true,
   },
   {
     id: "product-of-array-except-self",
@@ -42,6 +47,7 @@ export const problems: Problem[] = [
     topic: "Arrays",
     link: "https://leetcode.com/problems/product-of-array-except-self/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "maximum-subarray",
@@ -50,6 +56,7 @@ export const problems: Problem[] = [
     topic: "Arrays",
     link: "https://leetcode.com/problems/maximum-subarray/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "maximum-product-subarray",
@@ -58,6 +65,7 @@ export const problems: Problem[] = [
     topic: "Arrays",
     link: "https://leetcode.com/problems/maximum-product-subarray/",
     isSilicon100: false,
+    isIron1000: true,
   },
   {
     id: "find-minimum-in-rotated-sorted-array",
@@ -66,6 +74,7 @@ export const problems: Problem[] = [
     topic: "Arrays",
     link: "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "search-in-rotated-sorted-array",
@@ -74,6 +83,7 @@ export const problems: Problem[] = [
     topic: "Arrays",
     link: "https://leetcode.com/problems/search-in-rotated-sorted-array/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "3sum",
@@ -82,6 +92,7 @@ export const problems: Problem[] = [
     topic: "Arrays",
     link: "https://leetcode.com/problems/3sum/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "container-with-most-water",
@@ -90,6 +101,7 @@ export const problems: Problem[] = [
     topic: "Arrays",
     link: "https://leetcode.com/problems/container-with-most-water/",
     isSilicon100: true,
+    isIron1000: true,
   },
 
   // --- STRINGS (The Tricky Ones) ---
@@ -100,6 +112,7 @@ export const problems: Problem[] = [
     topic: "Strings",
     link: "https://leetcode.com/problems/valid-anagram/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "valid-parentheses",
@@ -108,6 +121,7 @@ export const problems: Problem[] = [
     topic: "Strings",
     link: "https://leetcode.com/problems/valid-parentheses/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "valid-palindrome",
@@ -116,6 +130,7 @@ export const problems: Problem[] = [
     topic: "Strings",
     link: "https://leetcode.com/problems/valid-palindrome/",
     isSilicon100: false,
+    isIron1000: true,
   },
   {
     id: "longest-substring-without-repeating-characters",
@@ -124,6 +139,7 @@ export const problems: Problem[] = [
     topic: "Strings",
     link: "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "longest-repeating-character-replacement",
@@ -132,6 +148,7 @@ export const problems: Problem[] = [
     topic: "Strings",
     link: "https://leetcode.com/problems/longest-repeating-character-replacement/",
     isSilicon100: false,
+    isIron1000: true,
   },
   {
     id: "group-anagrams",
@@ -140,6 +157,7 @@ export const problems: Problem[] = [
     topic: "Strings",
     link: "https://leetcode.com/problems/group-anagrams/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "palindromic-substrings",
@@ -148,6 +166,7 @@ export const problems: Problem[] = [
     topic: "Strings",
     link: "https://leetcode.com/problems/palindromic-substrings/",
     isSilicon100: false,
+    isIron1000: true,
   },
   {
     id: "longest-palindromic-substring",
@@ -156,6 +175,7 @@ export const problems: Problem[] = [
     topic: "Strings",
     link: "https://leetcode.com/problems/longest-palindromic-substring/",
     isSilicon100: true,
+    isIron1000: true,
   },
 
   // --- LINKED LIST (The Google Favorites) ---
@@ -166,6 +186,7 @@ export const problems: Problem[] = [
     topic: "Linked List",
     link: "https://leetcode.com/problems/reverse-linked-list/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "merge-two-sorted-lists",
@@ -174,6 +195,7 @@ export const problems: Problem[] = [
     topic: "Linked List",
     link: "https://leetcode.com/problems/merge-two-sorted-lists/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "reorder-list",
@@ -182,6 +204,7 @@ export const problems: Problem[] = [
     topic: "Linked List",
     link: "https://leetcode.com/problems/reorder-list/",
     isSilicon100: false,
+    isIron1000: true,
   },
   {
     id: "remove-nth-node-from-end-of-list",
@@ -190,6 +213,7 @@ export const problems: Problem[] = [
     topic: "Linked List",
     link: "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "linked-list-cycle",
@@ -198,6 +222,7 @@ export const problems: Problem[] = [
     topic: "Linked List",
     link: "https://leetcode.com/problems/linked-list-cycle/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "merge-k-sorted-lists",
@@ -206,6 +231,7 @@ export const problems: Problem[] = [
     topic: "Linked List",
     link: "https://leetcode.com/problems/merge-k-sorted-lists/",
     isSilicon100: true,
+    isIron1000: true,
   },
 
   // --- TREES (The Amazon Favorites) ---
@@ -216,6 +242,7 @@ export const problems: Problem[] = [
     topic: "Trees",
     link: "https://leetcode.com/problems/invert-binary-tree/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "maximum-depth-of-binary-tree",
@@ -224,7 +251,9 @@ export const problems: Problem[] = [
     topic: "Trees",
     link: "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
     isSilicon100: false,
+    isIron1000: true,
   },
+
   {
     id: "same-tree",
     title: "Same Tree",
@@ -232,6 +261,7 @@ export const problems: Problem[] = [
     topic: "Trees",
     link: "https://leetcode.com/problems/same-tree/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "subtree-of-another-tree",
@@ -240,6 +270,7 @@ export const problems: Problem[] = [
     topic: "Trees",
     link: "https://leetcode.com/problems/subtree-of-another-tree/",
     isSilicon100: false,
+    isIron1000: true,
   },
   {
     id: "lowest-common-ancestor-of-a-binary-search-tree",
@@ -248,6 +279,7 @@ export const problems: Problem[] = [
     topic: "Trees",
     link: "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
     isSilicon100: true,
+    isIron1000: true,
   },
   {
     id: "binary-tree-level-order-traversal",
@@ -256,135 +288,6 @@ export const problems: Problem[] = [
     topic: "Trees",
     link: "https://leetcode.com/problems/binary-tree-level-order-traversal/",
     isSilicon100: true,
-  },
-  {
-    id: "validate-binary-search-tree",
-    title: "Validate Binary Search Tree",
-    difficulty: "Medium",
-    topic: "Trees",
-    link: "https://leetcode.com/problems/validate-binary-search-tree/",
-    isSilicon100: true,
-  },
-  {
-    id: "kth-smallest-element-in-a-bst",
-    title: "Kth Smallest Element in a BST",
-    difficulty: "Medium",
-    topic: "Trees",
-    link: "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
-    isSilicon100: false,
-  },
-  {
-    id: "construct-binary-tree-from-preorder-and-inorder-traversal",
-    title: "Construct Binary Tree from Preorder and Inorder",
-    difficulty: "Medium",
-    topic: "Trees",
-    link: "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
-    isSilicon100: false,
-  },
-  {
-    id: "binary-tree-maximum-path-sum",
-    title: "Binary Tree Maximum Path Sum",
-    difficulty: "Hard",
-    topic: "Trees",
-    link: "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
-    isSilicon100: true,
-  },
-  {
-    id: "serialize-and-deserialize-binary-tree",
-    title: "Serialize and Deserialize Binary Tree",
-    difficulty: "Hard",
-    topic: "Trees",
-    link: "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
-    isSilicon100: true,
-  },
-
-  // --- DYNAMIC PROGRAMMING (The Boss Level) ---
-  {
-    id: "climbing-stairs",
-    title: "Climbing Stairs",
-    difficulty: "Easy",
-    topic: "Dynamic Programming",
-    link: "https://leetcode.com/problems/climbing-stairs/",
-    isSilicon100: true,
-  },
-  {
-    id: "coin-change",
-    title: "Coin Change",
-    difficulty: "Medium",
-    topic: "Dynamic Programming",
-    link: "https://leetcode.com/problems/coin-change/",
-    isSilicon100: true,
-  },
-  {
-    id: "longest-increasing-subsequence",
-    title: "Longest Increasing Subsequence",
-    difficulty: "Medium",
-    topic: "Dynamic Programming",
-    link: "https://leetcode.com/problems/longest-increasing-subsequence/",
-    isSilicon100: true,
-  },
-  {
-    id: "longest-common-subsequence",
-    title: "Longest Common Subsequence",
-    difficulty: "Medium",
-    topic: "Dynamic Programming",
-    link: "https://leetcode.com/problems/longest-common-subsequence/",
-    isSilicon100: true,
-  },
-  {
-    id: "word-break",
-    title: "Word Break",
-    difficulty: "Medium",
-    topic: "Dynamic Programming",
-    link: "https://leetcode.com/problems/word-break/",
-    isSilicon100: false,
-  },
-  {
-    id: "combination-sum",
-    title: "Combination Sum",
-    difficulty: "Medium",
-    topic: "Dynamic Programming",
-    link: "https://leetcode.com/problems/combination-sum/",
-    isSilicon100: false,
-  },
-  {
-    id: "house-robber",
-    title: "House Robber",
-    difficulty: "Medium",
-    topic: "Dynamic Programming",
-    link: "https://leetcode.com/problems/house-robber/",
-    isSilicon100: true,
-  },
-  {
-    id: "house-robber-ii",
-    title: "House Robber II",
-    difficulty: "Medium",
-    topic: "Dynamic Programming",
-    link: "https://leetcode.com/problems/house-robber-ii/",
-    isSilicon100: false,
-  },
-  {
-    id: "decode-ways",
-    title: "Decode Ways",
-    difficulty: "Medium",
-    topic: "Dynamic Programming",
-    link: "https://leetcode.com/problems/decode-ways/",
-    isSilicon100: false,
-  },
-  {
-    id: "unique-paths",
-    title: "Unique Paths",
-    difficulty: "Medium",
-    topic: "Dynamic Programming",
-    link: "https://leetcode.com/problems/unique-paths/",
-    isSilicon100: true,
-  },
-  {
-    id: "jump-game",
-    title: "Jump Game",
-    difficulty: "Medium",
-    topic: "Dynamic Programming",
-    link: "https://leetcode.com/problems/jump-game/",
-    isSilicon100: true,
+    isIron1000: true,
   },
 ];
