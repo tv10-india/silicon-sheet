@@ -102,7 +102,7 @@ export const problems: Problem[] = [
     difficulty: "Medium",
     topic: "Learn Language",
     link: "https://www.hackerrank.com/challenges/c-tutorial-pointer/problem",
-    isSilicon100: true, // Important for everyone
+    isSilicon100: false, // Important for everyone
     isIron1000: true,
   },
   // 10. STRUCTS
@@ -122,7 +122,7 @@ export const problems: Problem[] = [
     difficulty: "Medium",
     topic: "Learn Language",
     link: "https://leetcode.com/problems/number-of-1-bits/",
-    isSilicon100: true,
+    isSilicon100: false,
     isIron1000: true,
   },
   // 12. BIG O
@@ -132,7 +132,7 @@ export const problems: Problem[] = [
     difficulty: "Medium",
     topic: "Learn Language",
     link: "https://www.geeksforgeeks.org/analysis-of-algorithms-set-1-asymptotic-analysis/",
-    isSilicon100: true,
+    isSilicon100: false,
     isIron1000: true,
   },
 
