@@ -6,7 +6,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-// --- GLITCH LOGIC (7 Day Decay) ---
 const isGlitching = (dateString?: Date) => {
   if (!dateString) return false;
   const solvedDate = new Date(dateString);
@@ -29,14 +28,47 @@ export default function ProblemTable({
 
   const solvedIds = solvedData.map(d => d.id);
 
-  // --- STATS ENGINE ---
-  const totalMaster = data.length;
-  const solvedMaster = solvedIds.length;
+  // --- FILTERING LOGIC ---
+  const filteredData = data.filter(p => {
+    const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) || p.topic.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    let matchesTab = true;
 
+    // 1. SILICON 100 TAB
+    if (activeTab === "silicon100") {
+      matchesTab = p.isSilicon100 === true;
+    } 
+    // 2. IRON 1000 TAB
+    else if (activeTab === "iron1000") {
+      matchesTab = p.isIron1000 === true;
+    } 
+    // 3. MASTER TAB (ALL)
+    else if (activeTab === "all") {
+      // EXCLUDE the "Grind" topics from the Master View
+      if (p.topic === "Sector 0: The Forge") {
+        matchesTab = false;
+      }
+    }
+
+    return matchesSearch && matchesTab;
+  });
+
+  const topics = Array.from(new Set(filteredData.map((p) => p.topic)));
+  
+  // --- STATISTICS ENGINE ---
+  // We calculate stats based on the *Filtered Views* so the progress bar makes sense for each tab.
+  
+  // Master Stats (Everything EXCEPT Assiut)
+  const masterProblems = data.filter(p => p.topic !== "Sector 0: The Forge");
+  const totalMaster = masterProblems.length;
+  const solvedMaster = masterProblems.filter(p => solvedIds.includes(p.id)).length;
+
+  // Silicon Stats
   const siliconProblems = data.filter(p => p.isSilicon100);
   const totalSilicon = siliconProblems.length;
   const solvedSilicon = siliconProblems.filter(p => solvedIds.includes(p.id)).length;
 
+  // Iron Stats
   const ironProblems = data.filter(p => p.isIron1000);
   const totalIron = ironProblems.length;
   const solvedIron = ironProblems.filter(p => solvedIds.includes(p.id)).length;
@@ -53,21 +85,9 @@ export default function ProblemTable({
   }
 
   const currentProgress = currentTotal > 0 ? Math.round((currentSolved / currentTotal) * 100) : 0;
-
-  // --- FILTERING ---
-  const filteredData = data.filter(p => {
-    const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) || p.topic.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    let matchesTab = true;
-    if (activeTab === "silicon100") matchesTab = p.isSilicon100 === true;
-    if (activeTab === "iron1000") matchesTab = p.isIron1000 === true;
-
-    return matchesSearch && matchesTab;
-  });
-
-  const topics = Array.from(new Set(filteredData.map((p) => p.topic)));
   
   const getTopicProgress = (topic: string) => {
+    // Calculate based on what's visible in the current list
     const topicProblems = filteredData.filter(p => p.topic === topic);
     const solvedCount = topicProblems.filter(p => solvedIds.includes(p.id)).length;
     return `${solvedCount}/${topicProblems.length}`;
@@ -106,24 +126,21 @@ export default function ProblemTable({
         </p>
       </div>
       
-      {/* --- TAB SWITCHER & INFO --- */}
+      {/* --- TAB SWITCHER --- */}
       <div className="flex justify-center items-center gap-4 mb-10">
         <div className="flex items-center p-1.5 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
-          
           <button onClick={() => setActiveTab("all")} 
             className={cn("flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold transition-all", 
             activeTab === "all" ? "bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-md" : "text-slate-500 dark:text-slate-500 hover:text-slate-900 dark:hover:text-slate-300")}>
             <Layers className="w-4 h-4" />
             <span className="hidden sm:inline">Master</span>
           </button>
-
           <button onClick={() => setActiveTab("silicon100")} 
             className={cn("flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold transition-all", 
             activeTab === "silicon100" ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md shadow-purple-500/20" : "text-slate-500 dark:text-slate-500 hover:text-purple-500 dark:hover:text-purple-400")}>
             <Zap className="w-4 h-4" />
             <span className="hidden sm:inline">Silicon 100</span>
           </button>
-
           <button onClick={() => setActiveTab("iron1000")} 
             className={cn("flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold transition-all", 
             activeTab === "iron1000" ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md shadow-orange-500/20" : "text-slate-500 dark:text-slate-500 hover:text-orange-500 dark:hover:text-orange-400")}>
@@ -131,17 +148,12 @@ export default function ProblemTable({
             <span className="hidden sm:inline">Iron 1000</span>
           </button>
         </div>
-
-        {/* INFO BUTTON */}
-        <button 
-          onClick={() => setShowInfo(true)}
-          className="p-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
-        >
+        <button onClick={() => setShowInfo(true)} className="p-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
           <Info className="w-5 h-5" />
         </button>
       </div>
 
-      {/* --- SEARCH BAR --- */}
+      {/* --- SEARCH --- */}
       <div className="relative max-w-lg mx-auto mb-12 group">
         <div className={cn(
             "absolute inset-0 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000",
@@ -161,7 +173,7 @@ export default function ProblemTable({
         </div>
       </div>
 
-      {/* --- PROBLEM LIST --- */}
+      {/* --- LIST --- */}
       <div className="space-y-4">
         {topics.length > 0 ? (
           topics.map((topic, index) => (
@@ -185,7 +197,7 @@ export default function ProblemTable({
         )}
       </div>
 
-      {/* --- MODAL --- */}
+      {/* --- INFO MODAL --- */}
       {showInfo && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
           <div className="bg-white dark:bg-slate-900 w-full max-w-2xl rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden relative">
@@ -199,21 +211,21 @@ export default function ProblemTable({
                   <div className="p-3 h-fit rounded-lg bg-purple-100 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400"><Zap className="w-6 h-6" /></div>
                   <div>
                     <h3 className="font-bold text-purple-900 dark:text-purple-100">The Silicon 100</h3>
-                    <p className="text-sm text-purple-800 dark:text-purple-300 mt-1 leading-relaxed"><strong>Best for Interviews.</strong> The surgical list. The exact 100 questions most likely to appear in Google, Amazon, and Microsoft interviews.</p>
+                    <p className="text-sm text-purple-800 dark:text-purple-300 mt-1 leading-relaxed">The surgical approach. The exact 100 questions most frequently asked by Google, Amazon, and Microsoft.</p>
                   </div>
                 </div>
                 <div className="flex gap-4 p-4 rounded-xl bg-orange-50 dark:bg-orange-900/10 border border-orange-200 dark:border-orange-500/20">
                   <div className="p-3 h-fit rounded-lg bg-orange-100 dark:bg-orange-500/20 text-orange-600 dark:text-orange-400"><Dumbbell className="w-6 h-6" /></div>
                   <div>
                     <h3 className="font-bold text-orange-900 dark:text-orange-100">The Iron 1000</h3>
-                    <p className="text-sm text-orange-800 dark:text-orange-300 mt-1 leading-relaxed"><strong>Extreme Beginners.</strong> A brute force grind. High repetition of simple problems to build your muscle memory from scratch.</p>
+                    <p className="text-sm text-orange-800 dark:text-orange-300 mt-1 leading-relaxed">The brute force approach. Thousands of problems for beginners to build muscle memory.</p>
                   </div>
                 </div>
                 <div className="flex gap-4 p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-500/20">
                   <div className="p-3 h-fit rounded-lg bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400"><Layers className="w-6 h-6" /></div>
                   <div>
-                    <h3 className="font-bold text-blue-900 dark:text-blue-100">The Master Sheet</h3>
-                    <p className="text-sm text-blue-800 dark:text-blue-300 mt-1 leading-relaxed"><strong>Enough to understand patterns.</strong> The complete collection designed to teach you every variation of every algorithm.</p>
+                    <h3 className="font-bold text-blue-900 dark:text-blue-100">The Master Database</h3>
+                    <p className="text-sm text-blue-800 dark:text-blue-300 mt-1 leading-relaxed">The main curriculum. Includes all Concepts and DSA, but hides the repetitive 'Grind' problems.</p>
                   </div>
                 </div>
               </div>
@@ -222,7 +234,6 @@ export default function ProblemTable({
           </div>
         </div>
       )}
-
     </div>
   );
 }
