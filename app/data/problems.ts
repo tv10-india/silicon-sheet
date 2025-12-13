@@ -7,6 +7,7 @@ export type Problem = {
   videoUrl?: string;
   isSilicon100: boolean;
   isIron1000?: boolean;
+  isCP?: boolean;
 };
 
 export const problems: Problem[] = [
@@ -136,22 +137,16 @@ export const problems: Problem[] = [
     isIron1000: true,
   },
 
+  /* // ==========================================
+  // HIDDEN UPDATE: IRON GRIND (SECTOR 0)
+  // Uncomment this section to enable The Iron 1000
   // ==========================================
-  // SECTION 2: ASSIUT SHEET (Newcomers)
-  // Visible ONLY on Iron 1000 Tab (and Master)
-  // All grouped under "Assiut Sheet: Newcomers"
-  // ==========================================
-
-  // ==========================================
-  // SECTION 2: SECTOR 0 (The Forge)
-  // Visible ONLY on Iron 1000 Tab
-  // ==========================================
-
+  
   {
     id: "cf-say-hello",
     title: "A. Say Hello With C++",
     difficulty: "Easy",
-    topic: "Sector 0: The Forge", // <--- NEW NAME
+    topic: "Sector 0: The Forge",
     link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/A",
     isSilicon100: false,
     isIron1000: true,
@@ -381,4 +376,58 @@ export const problems: Problem[] = [
     isSilicon100: false,
     isIron1000: true,
   },
+  */
+
+  /*
+  // ==========================================
+  // HIDDEN UPDATE: THE ARENA (CP)
+  // Uncomment this section to enable Competitive Programming
+  // ==========================================
+
+  {
+    id: "cp-binary-exponentiation",
+    title: "Binary Exponentiation (Power in log N)",
+    difficulty: "Medium",
+    topic: "CP: Fundamentals",
+    link: "https://cp-algorithms.com/algebra/binary-exp.html",
+    isSilicon100: false,
+    isCP: true,
+  },
+  {
+    id: "cp-euclidean-gcd",
+    title: "Euclidean Algorithm (GCD)",
+    difficulty: "Easy",
+    topic: "CP: Fundamentals",
+    link: "https://cp-algorithms.com/algebra/euclid-algorithm.html",
+    isSilicon100: false,
+    isCP: true,
+  },
+  {
+    id: "cp-extended-euclidean",
+    title: "Extended Euclidean Algorithm",
+    difficulty: "Medium",
+    topic: "CP: Fundamentals",
+    link: "https://cp-algorithms.com/algebra/extended-euclid-algorithm.html",
+    isSilicon100: false,
+    isCP: true,
+  },
+  {
+    id: "cp-linear-diophantine",
+    title: "Linear Diophantine Equations",
+    difficulty: "Medium",
+    topic: "CP: Fundamentals",
+    link: "https://cp-algorithms.com/algebra/linear-diophantine-equation.html",
+    isSilicon100: false,
+    isCP: true,
+  },
+  {
+    id: "cp-fibonacci",
+    title: "Fibonacci Numbers (Fast Doubling)",
+    difficulty: "Medium",
+    topic: "CP: Fundamentals",
+    link: "https://cp-algorithms.com/algebra/fibonacci-numbers.html",
+    isSilicon100: false,
+    isCP: true,
+  },
+  */
 ];

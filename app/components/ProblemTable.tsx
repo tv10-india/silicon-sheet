@@ -1,11 +1,13 @@
 "use client";
 
-import { ExternalLink, CheckCircle2, Circle, ChevronRight, PlayCircle, Code2, Search, Zap, Layers, Dumbbell, RefreshCw, Info, X } from "lucide-react";
+import { ExternalLink, CheckCircle2, Circle, ChevronRight, PlayCircle, Code2, Search, Zap, Layers, Dumbbell, Swords, RefreshCw, Info, X } from "lucide-react";
 import { Problem } from "../data/problems";
+import { topicLectures } from "../data/lectures"; 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 
+// --- GLITCH LOGIC ---
 const isGlitching = (dateString?: Date) => {
   if (!dateString) return false;
   const solvedDate = new Date(dateString);
@@ -22,7 +24,9 @@ export default function ProblemTable({
   solvedData: { id: string, solvedAt: Date }[] 
 }) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeTab, setActiveTab] = useState<"all" | "silicon100" | "iron1000">("all");
+  
+  // MVP STATE: Only All (Master) and Silicon100 are active
+  const [activeTab, setActiveTab] = useState<"all" | "silicon100" /* | "iron1000" | "cp" */>("all");
   const [showInfo, setShowInfo] = useState(false); 
   const router = useRouter();
 
@@ -34,18 +38,20 @@ export default function ProblemTable({
     
     let matchesTab = true;
 
-    // 1. SILICON 100 TAB
     if (activeTab === "silicon100") {
       matchesTab = p.isSilicon100 === true;
     } 
-    // 2. IRON 1000 TAB
+    /* // HIDDEN FOR UPDATE v2
     else if (activeTab === "iron1000") {
       matchesTab = p.isIron1000 === true;
     } 
-    // 3. MASTER TAB (ALL)
+    else if (activeTab === "cp") {
+      matchesTab = p.isCP === true;
+    }
+    */
     else if (activeTab === "all") {
-      // EXCLUDE the "Grind" topics from the Master View
-      if (p.topic === "Sector 0: The Forge") {
+      // Still hiding the future "Grind" content from the Master view to keep it clean
+      if (p.topic.startsWith("Sector") || p.title.startsWith("CP:")) { 
         matchesTab = false;
       }
     }
@@ -56,22 +62,23 @@ export default function ProblemTable({
   const topics = Array.from(new Set(filteredData.map((p) => p.topic)));
   
   // --- STATISTICS ENGINE ---
-  // We calculate stats based on the *Filtered Views* so the progress bar makes sense for each tab.
-  
-  // Master Stats (Everything EXCEPT Assiut)
-  const masterProblems = data.filter(p => p.topic !== "Sector 0: The Forge");
+  const masterProblems = data.filter(p => !p.topic.startsWith("Sector") && !p.title.startsWith("CP:"));
   const totalMaster = masterProblems.length;
   const solvedMaster = masterProblems.filter(p => solvedIds.includes(p.id)).length;
 
-  // Silicon Stats
   const siliconProblems = data.filter(p => p.isSilicon100);
   const totalSilicon = siliconProblems.length;
   const solvedSilicon = siliconProblems.filter(p => solvedIds.includes(p.id)).length;
 
-  // Iron Stats
+  /*
   const ironProblems = data.filter(p => p.isIron1000);
   const totalIron = ironProblems.length;
   const solvedIron = ironProblems.filter(p => solvedIds.includes(p.id)).length;
+
+  const cpProblems = data.filter(p => p.isCP);
+  const totalCP = cpProblems.length;
+  const solvedCP = cpProblems.filter(p => solvedIds.includes(p.id)).length;
+  */
 
   let currentTotal = totalMaster;
   let currentSolved = solvedMaster;
@@ -79,15 +86,20 @@ export default function ProblemTable({
   if (activeTab === "silicon100") {
     currentTotal = totalSilicon;
     currentSolved = solvedSilicon;
-  } else if (activeTab === "iron1000") {
+  } 
+  /*
+  else if (activeTab === "iron1000") {
     currentTotal = totalIron;
     currentSolved = solvedIron;
+  } else if (activeTab === "cp") {
+    currentTotal = totalCP;
+    currentSolved = solvedCP;
   }
+  */
 
   const currentProgress = currentTotal > 0 ? Math.round((currentSolved / currentTotal) * 100) : 0;
   
   const getTopicProgress = (topic: string) => {
-    // Calculate based on what's visible in the current list
     const topicProblems = filteredData.filter(p => p.topic === topic);
     const solvedCount = topicProblems.filter(p => solvedIds.includes(p.id)).length;
     return `${solvedCount}/${topicProblems.length}`;
@@ -108,7 +120,8 @@ export default function ProblemTable({
               "h-full transition-all duration-1000 ease-out relative",
               activeTab === "all" && "bg-gradient-to-r from-blue-500 to-cyan-400",
               activeTab === "silicon100" && "bg-gradient-to-r from-purple-600 to-pink-500",
-              activeTab === "iron1000" && "bg-gradient-to-r from-orange-500 to-amber-400"
+              // activeTab === "iron1000" && "bg-gradient-to-r from-orange-500 to-amber-400",
+              // activeTab === "cp" && "bg-gradient-to-r from-red-600 to-rose-600"
             )}
             style={{ width: `${currentProgress}%` }}
           >
@@ -120,35 +133,50 @@ export default function ProblemTable({
             "text-xs font-mono font-bold uppercase tracking-[0.2em] transition-colors", 
             activeTab === "all" && "text-blue-600 dark:text-blue-400",
             activeTab === "silicon100" && "text-purple-600 dark:text-purple-400",
-            activeTab === "iron1000" && "text-orange-600 dark:text-orange-400"
+            // activeTab === "iron1000" && "text-orange-600 dark:text-orange-400",
+            // activeTab === "cp" && "text-red-600 dark:text-red-400"
           )}>
-          {activeTab === "all" ? "Master Database" : activeTab === "silicon100" ? "Silicon Protocol" : "Iron Grind"}
+          {activeTab === "all" ? "Master Database" : 
+           activeTab === "silicon100" ? "Silicon Protocol" : ""}
         </p>
       </div>
       
       {/* --- TAB SWITCHER --- */}
       <div className="flex justify-center items-center gap-4 mb-10">
-        <div className="flex items-center p-1.5 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
+        <div className="flex items-center p-1.5 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-x-auto shadow-sm max-w-full">
+          
           <button onClick={() => setActiveTab("all")} 
-            className={cn("flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold transition-all", 
+            className={cn("flex items-center gap-2 px-4 md:px-5 py-3 rounded-xl text-sm font-bold transition-all whitespace-nowrap", 
             activeTab === "all" ? "bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-md" : "text-slate-500 dark:text-slate-500 hover:text-slate-900 dark:hover:text-slate-300")}>
             <Layers className="w-4 h-4" />
             <span className="hidden sm:inline">Master</span>
           </button>
+
           <button onClick={() => setActiveTab("silicon100")} 
-            className={cn("flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold transition-all", 
+            className={cn("flex items-center gap-2 px-4 md:px-5 py-3 rounded-xl text-sm font-bold transition-all whitespace-nowrap", 
             activeTab === "silicon100" ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md shadow-purple-500/20" : "text-slate-500 dark:text-slate-500 hover:text-purple-500 dark:hover:text-purple-400")}>
             <Zap className="w-4 h-4" />
             <span className="hidden sm:inline">Silicon 100</span>
           </button>
-          <button onClick={() => setActiveTab("iron1000")} 
-            className={cn("flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold transition-all", 
-            activeTab === "iron1000" ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md shadow-orange-500/20" : "text-slate-500 dark:text-slate-500 hover:text-orange-500 dark:hover:text-orange-400")}>
+
+          {/* HIDDEN FOR FUTURE UPDATES
+          <button onClick={() => setActiveTab("iron1000")} ... >
             <Dumbbell className="w-4 h-4" />
             <span className="hidden sm:inline">Iron 1000</span>
           </button>
+
+          <button onClick={() => setActiveTab("cp")} ... >
+            <Swords className="w-4 h-4" />
+            <span className="hidden sm:inline">Arena</span>
+          </button>
+          */}
+
         </div>
-        <button onClick={() => setShowInfo(true)} className="p-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+
+        <button 
+          onClick={() => setShowInfo(true)}
+          className="p-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+        >
           <Info className="w-5 h-5" />
         </button>
       </div>
@@ -159,13 +187,12 @@ export default function ProblemTable({
             "absolute inset-0 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000",
             activeTab === "all" && "bg-gradient-to-r from-blue-500 to-cyan-500",
             activeTab === "silicon100" && "bg-gradient-to-r from-purple-500 to-pink-500",
-            activeTab === "iron1000" && "bg-gradient-to-r from-orange-500 to-amber-500",
           )}></div>
         <div className="relative bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl flex items-center p-1.5 shadow-sm">
           <Search className="w-5 h-5 text-slate-400 ml-3 mr-2" />
           <input 
             type="text" 
-            placeholder={activeTab === "iron1000" ? "Search the Grind..." : "Search problems..."}
+            placeholder="Search problems..."
             className="w-full bg-transparent border-none text-slate-900 dark:text-white focus:ring-0 h-10 placeholder:text-slate-400 font-medium" 
             value={searchQuery} 
             onChange={(e) => setSearchQuery(e.target.value)} 
@@ -207,27 +234,30 @@ export default function ProblemTable({
             <div className="p-8">
               <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Choose Your Protocol</h2>
               <div className="space-y-4">
-                <div className="flex gap-4 p-4 rounded-xl bg-purple-50 dark:bg-purple-900/10 border border-purple-200 dark:border-purple-500/20">
-                  <div className="p-3 h-fit rounded-lg bg-purple-100 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400"><Zap className="w-6 h-6" /></div>
-                  <div>
-                    <h3 className="font-bold text-purple-900 dark:text-purple-100">The Silicon 100</h3>
-                    <p className="text-sm text-purple-800 dark:text-purple-300 mt-1 leading-relaxed">The surgical approach. The exact 100 questions most frequently asked by Google, Amazon, and Microsoft.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4 p-4 rounded-xl bg-orange-50 dark:bg-orange-900/10 border border-orange-200 dark:border-orange-500/20">
-                  <div className="p-3 h-fit rounded-lg bg-orange-100 dark:bg-orange-500/20 text-orange-600 dark:text-orange-400"><Dumbbell className="w-6 h-6" /></div>
-                  <div>
-                    <h3 className="font-bold text-orange-900 dark:text-orange-100">The Iron 1000</h3>
-                    <p className="text-sm text-orange-800 dark:text-orange-300 mt-1 leading-relaxed">The brute force approach. Thousands of problems for beginners to build muscle memory.</p>
-                  </div>
-                </div>
+                
+                {/* 1. MASTER */}
                 <div className="flex gap-4 p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-500/20">
                   <div className="p-3 h-fit rounded-lg bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400"><Layers className="w-6 h-6" /></div>
                   <div>
                     <h3 className="font-bold text-blue-900 dark:text-blue-100">The Master Database</h3>
-                    <p className="text-sm text-blue-800 dark:text-blue-300 mt-1 leading-relaxed">The main curriculum. Includes all Concepts and DSA, but hides the repetitive 'Grind' problems.</p>
+                    <p className="text-sm text-blue-800 dark:text-blue-300 mt-1">Core concepts and standard algorithms. The foundation.</p>
                   </div>
                 </div>
+
+                {/* 2. SILICON */}
+                <div className="flex gap-4 p-4 rounded-xl bg-purple-50 dark:bg-purple-900/10 border border-purple-200 dark:border-purple-500/20">
+                  <div className="p-3 h-fit rounded-lg bg-purple-100 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400"><Zap className="w-6 h-6" /></div>
+                  <div>
+                    <h3 className="font-bold text-purple-900 dark:text-purple-100">The Silicon 100</h3>
+                    <p className="text-sm text-purple-800 dark:text-purple-300 mt-1">Interview Prep. The exact 100 questions asked by Big Tech.</p>
+                  </div>
+                </div>
+
+                {/* HIDDEN MODAL SECTIONS FOR UPDATE
+                <div className="flex gap-4 p-4 rounded-xl bg-orange-50 ...">...</div>
+                <div className="flex gap-4 p-4 rounded-xl bg-red-50 ...">...</div>
+                */}
+
               </div>
               <button onClick={() => setShowInfo(false)} className="w-full mt-6 py-3 rounded-xl font-bold bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:opacity-90 transition-opacity">Understood</button>
             </div>
@@ -238,35 +268,40 @@ export default function ProblemTable({
   );
 }
 
-// --- SUB-COMPONENTS ---
-
+// --- ACCORDION COMPONENT ---
 function TopicAccordion({ topic, problems, solvedData, progress, defaultOpen, activeTab }: any) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const [solved, total] = progress.split('/').map(Number);
   const percentage = total > 0 ? (solved / total) * 100 : 0;
 
+  // Theme Logic (Iron and CP logic exists but wont be triggered)
   const activeColorClass = 
-    activeTab === "iron1000" ? "bg-orange-500 text-white" :
+    // activeTab === "cp" ? "bg-red-600 text-white" :
+    // activeTab === "iron1000" ? "bg-orange-500 text-white" :
     activeTab === "silicon100" ? "bg-purple-600 text-white" :
     "bg-blue-500 text-white";
 
   const activeBorderClass = 
-    activeTab === "iron1000" ? "border-orange-500/30 shadow-orange-500/10" :
+    // activeTab === "cp" ? "border-red-500/30 shadow-red-500/10" :
+    // activeTab === "iron1000" ? "border-orange-500/30 shadow-orange-500/10" :
     activeTab === "silicon100" ? "border-purple-500/30 shadow-purple-500/10" :
     "border-blue-500/30 shadow-blue-500/10";
 
   const activeTextClass = 
-     activeTab === "iron1000" ? "text-orange-600 dark:text-orange-400" :
+    //  activeTab === "cp" ? "text-red-600 dark:text-red-400" :
+    //  activeTab === "iron1000" ? "text-orange-600 dark:text-orange-400" :
      activeTab === "silicon100" ? "text-purple-600 dark:text-purple-400" :
      "text-blue-600 dark:text-blue-400";
 
   const activeBgClass =
-     activeTab === "iron1000" ? "bg-orange-500" :
+    //  activeTab === "cp" ? "bg-red-600" :
+    //  activeTab === "iron1000" ? "bg-orange-500" :
      activeTab === "silicon100" ? "bg-purple-600" :
      "bg-blue-500";
 
   const activeStrokeClass = 
-     activeTab === "iron1000" ? "border-orange-500" : 
+    //  activeTab === "cp" ? "border-red-600" :
+    //  activeTab === "iron1000" ? "border-orange-500" : 
      activeTab === "silicon100" ? "border-purple-600" : 
      "border-blue-500";
 
@@ -311,15 +346,59 @@ function TopicAccordion({ topic, problems, solvedData, progress, defaultOpen, ac
              <div className={cn("absolute inset-0 rounded-full border-4 border-r-transparent border-b-transparent -rotate-45 transition-colors", activeStrokeClass)} 
                 style={{ clipPath: percentage < 50 ? 'inset(0 50% 0 0)' : 'none', transform: `rotate(${percentage * 3.6}deg)` }} />
              
-             {activeTab === "iron1000" ? <Dumbbell className={cn("w-4 h-4 transition-colors", isOpen ? "text-orange-500" : "text-slate-400")} /> :
-              activeTab === "silicon100" ? <Zap className={cn("w-4 h-4 transition-colors", isOpen ? "text-purple-600" : "text-slate-400")} /> :
+             {/* // Future Icons (Commented Out)
+               activeTab === "cp" ? <Swords ... /> :
+               activeTab === "iron1000" ? <Dumbbell ... /> :
+             */}
+             
+             {activeTab === "silicon100" ? <Zap className={cn("w-4 h-4 transition-colors", isOpen ? "text-purple-600" : "text-slate-400")} /> :
               <Layers className={cn("w-4 h-4 transition-colors", isOpen ? "text-blue-500" : "text-slate-400")} />}
           </div>
         </div>
       </button>
 
+      {/* --- EXPANDED CONTENT --- */}
       <div className={`transition-all duration-500 ease-in-out ${isOpen ? "max-h-[3000px] opacity-100" : "max-h-0 opacity-0 overflow-hidden"}`}>
         <div className="border-t border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-black/20">
+          
+          {/* === TOPIC BRIEFING BANNER === */}
+          {topicLectures[topic] && (
+            <div className={cn(
+                "p-4 border-b flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between", 
+                // activeTab === "cp" ? "bg-red-50..." : 
+                // activeTab === "iron1000" ? "bg-orange-50..." :
+                "bg-blue-50 dark:bg-blue-900/10 border-blue-100 dark:border-blue-500/20"
+              )}>
+              <div className="flex items-center gap-3">
+                <div className={cn(
+                    "p-2.5 rounded-full",
+                    // activeTab === "cp" ? "bg-red-100..." :
+                    "bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400"
+                  )}>
+                  <PlayCircle className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className={cn("text-sm font-bold", 
+                     // activeTab === "cp" ? "text-red-900" :
+                     "text-slate-900 dark:text-white"
+                  )}>Topic Briefing</h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-400">Watch the concept lecture before solving.</p>
+                </div>
+              </div>
+              <a 
+                href={topicLectures[topic]} 
+                target="_blank"
+                className={cn(
+                  "px-4 py-2 text-xs font-bold uppercase rounded-lg shadow-sm hover:shadow-md transition-all whitespace-nowrap",
+                  // activeTab === "cp" ? "bg-white text-red-600" :
+                  "bg-white dark:bg-blue-600 text-blue-600 dark:text-white"
+                )}
+              >
+                Watch Lecture
+              </a>
+            </div>
+          )}
+
           {problems.map((problem: any, idx: number) => {
             const solvedRecord = solvedData.find((d: any) => d.id === problem.id);
             return <ProblemRow key={problem.id} problem={problem} solvedRecord={solvedRecord} />;
@@ -330,6 +409,7 @@ function TopicAccordion({ topic, problems, solvedData, progress, defaultOpen, ac
   );
 }
 
+// --- ROW COMPONENT ---
 function ProblemRow({ problem, solvedRecord }: any) {
   const isSolved = !!solvedRecord;
   const isCorrupted = isSolved && isGlitching(solvedRecord.solvedAt); 
