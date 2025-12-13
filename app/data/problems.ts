@@ -12,11 +12,10 @@ export type Problem = {
 
 export const problems: Problem[] = [
   // ==========================================
-  // SECTION 1: LEARN LANGUAGE (The Roadmap)
-  // Visible on Master & Iron 1000
+  // PHASE 1: THE FOUNDATION (Language & Logic)
   // ==========================================
 
-  // 1. INTRO
+  // --- TOPIC: LEARN LANGUAGE ---
   {
     id: "cpp-intro-setup",
     title: "1. Intro to C++ & Setup",
@@ -26,7 +25,6 @@ export const problems: Problem[] = [
     isSilicon100: false,
     isIron1000: true,
   },
-  // 2. DATA TYPES
   {
     id: "cpp-datatypes",
     title: "2. Data Types & Variables",
@@ -36,7 +34,6 @@ export const problems: Problem[] = [
     isSilicon100: false,
     isIron1000: true,
   },
-  // 3. OPERATORS
   {
     id: "cpp-operators",
     title: "3. Operators (Math & Logic)",
@@ -46,7 +43,6 @@ export const problems: Problem[] = [
     isSilicon100: false,
     isIron1000: true,
   },
-  // 4. CONDITIONS
   {
     id: "cpp-conditionals",
     title: "4. Conditional Statements",
@@ -56,7 +52,6 @@ export const problems: Problem[] = [
     isSilicon100: false,
     isIron1000: true,
   },
-  // 5. LOOPS
   {
     id: "cpp-loops",
     title: "5. Loops (For, While)",
@@ -66,7 +61,6 @@ export const problems: Problem[] = [
     isSilicon100: false,
     isIron1000: true,
   },
-  // 6. FUNCTIONS
   {
     id: "cpp-functions",
     title: "6. Functions",
@@ -76,7 +70,6 @@ export const problems: Problem[] = [
     isSilicon100: false,
     isIron1000: true,
   },
-  // 7. ARRAYS
   {
     id: "cpp-arrays",
     title: "7. Arrays",
@@ -86,7 +79,6 @@ export const problems: Problem[] = [
     isSilicon100: false,
     isIron1000: true,
   },
-  // 8. STRINGS
   {
     id: "cpp-strings",
     title: "8. Strings",
@@ -96,17 +88,15 @@ export const problems: Problem[] = [
     isSilicon100: false,
     isIron1000: true,
   },
-  // 9. POINTERS
   {
     id: "cpp-pointers",
     title: "9. Pointers & References",
     difficulty: "Medium",
     topic: "Learn Language",
     link: "https://www.hackerrank.com/challenges/c-tutorial-pointer/problem",
-    isSilicon100: false, // Important for everyone
+    isSilicon100: false,
     isIron1000: true,
   },
-  // 10. STRUCTS
   {
     id: "cpp-structures",
     title: "10. Structures",
@@ -116,7 +106,6 @@ export const problems: Problem[] = [
     isSilicon100: false,
     isIron1000: true,
   },
-  // 11. BITWISE
   {
     id: "cpp-bitwise",
     title: "11. Bitwise Operations",
@@ -126,7 +115,6 @@ export const problems: Problem[] = [
     isSilicon100: false,
     isIron1000: true,
   },
-  // 12. BIG O
   {
     id: "cpp-big-o",
     title: "12. Time Complexity (Big O)",
@@ -137,297 +125,377 @@ export const problems: Problem[] = [
     isIron1000: true,
   },
 
-  /* // ==========================================
-  // HIDDEN UPDATE: IRON GRIND (SECTOR 0)
-  // Uncomment this section to enable The Iron 1000
   // ==========================================
-  
-  {
-    id: "cf-say-hello",
-    title: "A. Say Hello With C++",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/A",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-basic-data-types",
-    title: "B. Basic Data Types",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/B",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-simple-calculator",
-    title: "C. Simple Calculator",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/C",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-difference",
-    title: "D. Difference",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/D",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-area-of-circle",
-    title: "E. Area of a Circle",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/E",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-digits-summation",
-    title: "F. Digits Summation",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/F",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-summation-1-to-n",
-    title: "G. Summation from 1 to N",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/G",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-two-numbers",
-    title: "H. Two Numbers",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/H",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-welcome-conditions",
-    title: "I. Welcome for you with Conditions",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/I",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-multiples",
-    title: "J. Multiples",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/J",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-max-min",
-    title: "K. Max and Min",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/K",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-the-brothers",
-    title: "L. The Brothers",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/L",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-capital-small-digit",
-    title: "M. Capital or Small or Digit",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/M",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-char",
-    title: "N. Char",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/N",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-calculator",
-    title: "O. Calculator",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/O",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-first-digit",
-    title: "P. First Digit!",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/P",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-coordinates",
-    title: "Q. Coordinates of a Point",
-    difficulty: "Medium",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/Q",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-age-in-days",
-    title: "R. Age in Days",
-    difficulty: "Medium",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/R",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-interval",
-    title: "S. Interval",
-    difficulty: "Medium",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/S",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-sort-numbers",
-    title: "T. Sort Numbers",
-    difficulty: "Medium",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/T",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-float-int",
-    title: "U. Float or Int",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/U",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-comparison",
-    title: "V. Comparison",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/V",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-math-expression",
-    title: "W. Mathematical Expression",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/W",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-two-intervals",
-    title: "X. Two Intervals",
-    difficulty: "Medium",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/X",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-last-two-digits",
-    title: "Y. The Last 2 Digits",
-    difficulty: "Easy",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/Y",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  {
-    id: "cf-hard-compare",
-    title: "Z. Hard Compare",
-    difficulty: "Hard",
-    topic: "Sector 0: The Forge",
-    link: "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/Z",
-    isSilicon100: false,
-    isIron1000: true,
-  },
-  */
-
-  /*
-  // ==========================================
-  // HIDDEN UPDATE: THE ARENA (CP)
-  // Uncomment this section to enable Competitive Programming
+  // PHASE 2: CORE TOOLS (Math & Bits)
   // ==========================================
 
+  // --- TOPIC: MATH & NUMBER THEORY ---
   {
-    id: "cp-binary-exponentiation",
-    title: "Binary Exponentiation (Power in log N)",
-    difficulty: "Medium",
-    topic: "CP: Fundamentals",
-    link: "https://cp-algorithms.com/algebra/binary-exp.html",
-    isSilicon100: false,
-    isCP: true,
-  },
-  {
-    id: "cp-euclidean-gcd",
-    title: "Euclidean Algorithm (GCD)",
+    id: "math-gcd",
+    title: "Find Greatest Common Divisor (GCD)",
     difficulty: "Easy",
-    topic: "CP: Fundamentals",
-    link: "https://cp-algorithms.com/algebra/euclid-algorithm.html",
-    isSilicon100: false,
-    isCP: true,
+    topic: "Math & Number Theory",
+    link: "https://leetcode.com/problems/find-greatest-common-divisor-of-array/",
+    isSilicon100: true,
+    isIron1000: true,
   },
   {
-    id: "cp-extended-euclidean",
-    title: "Extended Euclidean Algorithm",
+    id: "math-count-primes",
+    title: "Count Primes (Sieve of Eratosthenes)",
     difficulty: "Medium",
-    topic: "CP: Fundamentals",
-    link: "https://cp-algorithms.com/algebra/extended-euclid-algorithm.html",
-    isSilicon100: false,
-    isCP: true,
+    topic: "Math & Number Theory",
+    link: "https://leetcode.com/problems/count-primes/",
+    isSilicon100: true,
+    isIron1000: false,
   },
   {
-    id: "cp-linear-diophantine",
-    title: "Linear Diophantine Equations",
+    id: "math-pow",
+    title: "Pow(x, n) - Binary Exponentiation",
     difficulty: "Medium",
-    topic: "CP: Fundamentals",
-    link: "https://cp-algorithms.com/algebra/linear-diophantine-equation.html",
-    isSilicon100: false,
-    isCP: true,
+    topic: "Math & Number Theory",
+    link: "https://leetcode.com/problems/powx-n/",
+    isSilicon100: true,
+    isIron1000: false,
   },
   {
-    id: "cp-fibonacci",
-    title: "Fibonacci Numbers (Fast Doubling)",
-    difficulty: "Medium",
-    topic: "CP: Fundamentals",
-    link: "https://cp-algorithms.com/algebra/fibonacci-numbers.html",
-    isSilicon100: false,
-    isCP: true,
+    id: "math-fibonacci",
+    title: "Fibonacci Number",
+    difficulty: "Easy",
+    topic: "Math & Number Theory",
+    link: "https://leetcode.com/problems/fibonacci-number/",
+    isSilicon100: true,
+    isIron1000: true,
   },
-  */
+  {
+    id: "math-factorial-zeroes",
+    title: "Factorial Trailing Zeroes",
+    difficulty: "Medium",
+    topic: "Math & Number Theory",
+    link: "https://leetcode.com/problems/factorial-trailing-zeroes/",
+    isSilicon100: true,
+    isIron1000: false,
+  },
+
+  // --- TOPIC: BIT MANIPULATION ---
+  {
+    id: "bit-gray-code",
+    title: "Gray Code",
+    difficulty: "Medium",
+    topic: "Bit Manipulation",
+    link: "https://leetcode.com/problems/gray-code/",
+    isSilicon100: false,
+    isIron1000: false,
+  },
+  {
+    id: "bit-single-number",
+    title: "Single Number (XOR)",
+    difficulty: "Easy",
+    topic: "Bit Manipulation",
+    link: "https://leetcode.com/problems/single-number/",
+    isSilicon100: true,
+    isIron1000: true,
+  },
+
+  // ==========================================
+  // PHASE 3: ALGORITHMIC PATTERNS (The How)
+  // ==========================================
+
+  // --- TOPIC: TWO POINTERS ---
+  {
+    id: "two-pointers-palindrome",
+    title: "Valid Palindrome",
+    difficulty: "Easy",
+    topic: "Two Pointers",
+    link: "https://leetcode.com/problems/valid-palindrome/",
+    isSilicon100: true,
+    isIron1000: true,
+  },
+  {
+    id: "two-pointers-container",
+    title: "Container With Most Water",
+    difficulty: "Medium",
+    topic: "Two Pointers",
+    link: "https://leetcode.com/problems/container-with-most-water/",
+    isSilicon100: true,
+    isIron1000: false,
+  },
+
+  // --- TOPIC: SLIDING WINDOW ---
+  {
+    id: "sliding-window-stock",
+    title: "Best Time to Buy and Sell Stock",
+    difficulty: "Easy",
+    topic: "Sliding Window",
+    link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+    isSilicon100: true,
+    isIron1000: true,
+  },
+  {
+    id: "sliding-window-substring",
+    title: "Longest Substring Without Repeating Characters",
+    difficulty: "Medium",
+    topic: "Sliding Window",
+    link: "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+    isSilicon100: true,
+    isIron1000: false,
+  },
+
+  // --- TOPIC: BINARY SEARCH ---
+  {
+    id: "binary-search-basic",
+    title: "Binary Search (Standard)",
+    difficulty: "Easy",
+    topic: "Binary Search",
+    link: "https://leetcode.com/problems/binary-search/",
+    isSilicon100: true,
+    isIron1000: true,
+  },
+  {
+    id: "binary-search-rotated",
+    title: "Search in Rotated Sorted Array",
+    difficulty: "Medium",
+    topic: "Binary Search",
+    link: "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+    isSilicon100: true,
+    isIron1000: false,
+  },
+
+  // --- TOPIC: PREFIX SUM ---
+  {
+    id: "prefix-sum-running",
+    title: "Running Sum of 1d Array",
+    difficulty: "Easy",
+    topic: "Prefix Sum",
+    link: "https://leetcode.com/problems/running-sum-of-1d-array/",
+    isSilicon100: false,
+    isIron1000: true,
+  },
+
+  // ==========================================
+  // PHASE 4: LINEAR DATA STRUCTURES
+  // ==========================================
+
+  // --- TOPIC: STRINGS ---
+  {
+    id: "string-longest-palindrome",
+    title: "Longest Palindromic Substring",
+    difficulty: "Medium",
+    topic: "Strings",
+    link: "https://leetcode.com/problems/longest-palindromic-substring/",
+    isSilicon100: true,
+    isIron1000: false,
+  },
+  {
+    id: "string-anagram",
+    title: "Valid Anagram",
+    difficulty: "Easy",
+    topic: "Strings",
+    link: "https://leetcode.com/problems/valid-anagram/",
+    isSilicon100: true,
+    isIron1000: true,
+  },
+
+  // --- TOPIC: LINKED LIST ---
+  {
+    id: "ll-reverse",
+    title: "Reverse Linked List",
+    difficulty: "Easy",
+    topic: "Linked List",
+    link: "https://leetcode.com/problems/reverse-linked-list/",
+    isSilicon100: true,
+    isIron1000: true,
+  },
+  {
+    id: "ll-cycle",
+    title: "Linked List Cycle",
+    difficulty: "Easy",
+    topic: "Linked List",
+    link: "https://leetcode.com/problems/linked-list-cycle/",
+    isSilicon100: true,
+    isIron1000: true,
+  },
+
+  // --- TOPIC: HASHING ---
+  {
+    id: "hashing-two-sum",
+    title: "Two Sum",
+    difficulty: "Easy",
+    topic: "Hashing",
+    link: "https://leetcode.com/problems/two-sum/",
+    isSilicon100: true,
+    isIron1000: true,
+  },
+
+  // --- TOPIC: STACK ---
+  {
+    id: "stack-valid-parentheses",
+    title: "Valid Parentheses",
+    difficulty: "Easy",
+    topic: "Stack",
+    link: "https://leetcode.com/problems/valid-parentheses/",
+    isSilicon100: true,
+    isIron1000: true,
+  },
+
+  // --- TOPIC: QUEUE ---
+  {
+    id: "queue-stack-implementation",
+    title: "Implement Queue using Stacks",
+    difficulty: "Easy",
+    topic: "Queue",
+    link: "https://leetcode.com/problems/implement-queue-using-stacks/",
+    isSilicon100: true,
+    isIron1000: true,
+  },
+
+  // ==========================================
+  // PHASE 5: RECURSION & BACKTRACKING
+  // ==========================================
+
+  // --- TOPIC: RECURSION ---
+  {
+    id: "recursion-climbing-stairs",
+    title: "Climbing Stairs",
+    difficulty: "Easy",
+    topic: "Recursion",
+    link: "https://leetcode.com/problems/climbing-stairs/",
+    isSilicon100: true,
+    isIron1000: true,
+  },
+
+  // --- TOPIC: BACKTRACKING ---
+  {
+    id: "backtracking-permutations",
+    title: "Permutations",
+    difficulty: "Medium",
+    topic: "Backtracking",
+    link: "https://leetcode.com/problems/permutations/",
+    isSilicon100: true,
+    isIron1000: false,
+  },
+  {
+    id: "backtracking-subsets",
+    title: "Subsets",
+    difficulty: "Medium",
+    topic: "Backtracking",
+    link: "https://leetcode.com/problems/subsets/",
+    isSilicon100: true,
+    isIron1000: false,
+  },
+
+  // ==========================================
+  // PHASE 6: NON-LINEAR DATA STRUCTURES
+  // ==========================================
+
+  // --- TOPIC: BINARY TREES ---
+  {
+    id: "tree-invert",
+    title: "Invert Binary Tree",
+    difficulty: "Easy",
+    topic: "Binary Trees",
+    link: "https://leetcode.com/problems/invert-binary-tree/",
+    isSilicon100: true,
+    isIron1000: true,
+  },
+  {
+    id: "tree-max-depth",
+    title: "Maximum Depth of Binary Tree",
+    difficulty: "Easy",
+    topic: "Binary Trees",
+    link: "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+    isSilicon100: true,
+    isIron1000: true,
+  },
+
+  // --- TOPIC: BINARY SEARCH TREE (BST) ---
+  {
+    id: "bst-validate",
+    title: "Validate Binary Search Tree",
+    difficulty: "Medium",
+    topic: "Binary Search Tree",
+    link: "https://leetcode.com/problems/validate-binary-search-tree/",
+    isSilicon100: true,
+    isIron1000: false,
+  },
+
+  // --- TOPIC: GRAPHS ---
+  {
+    id: "graph-islands",
+    title: "Number of Islands",
+    difficulty: "Medium",
+    topic: "Graphs",
+    link: "https://leetcode.com/problems/number-of-islands/",
+    isSilicon100: true,
+    isIron1000: false,
+  },
+  {
+    id: "graph-clone",
+    title: "Clone Graph",
+    difficulty: "Medium",
+    topic: "Graphs",
+    link: "https://leetcode.com/problems/clone-graph/",
+    isSilicon100: true,
+    isIron1000: false,
+  },
+
+  // ==========================================
+  // PHASE 7: OPTIMIZATION ALGORITHMS
+  // ==========================================
+
+  // --- TOPIC: DYNAMIC PROGRAMMING ---
+  {
+    id: "dp-house-robber",
+    title: "House Robber",
+    difficulty: "Medium",
+    topic: "Dynamic Programming",
+    link: "https://leetcode.com/problems/house-robber/",
+    isSilicon100: true,
+    isIron1000: false,
+  },
+  {
+    id: "dp-coin-change",
+    title: "Coin Change",
+    difficulty: "Medium",
+    topic: "Dynamic Programming",
+    link: "https://leetcode.com/problems/coin-change/",
+    isSilicon100: true,
+    isIron1000: false,
+  },
+
+  // --- TOPIC: GREEDY ---
+  {
+    id: "greedy-jump-game",
+    title: "Jump Game",
+    difficulty: "Medium",
+    topic: "Greedy",
+    link: "https://leetcode.com/problems/jump-game/",
+    isSilicon100: true,
+    isIron1000: false,
+  },
+
+  // ==========================================
+  // PHASE 8: SPECIAL DATA STRUCTURES
+  // ==========================================
+
+  // --- TOPIC: TRIES ---
+  {
+    id: "trie-implement",
+    title: "Implement Trie (Prefix Tree)",
+    difficulty: "Medium",
+    topic: "Tries",
+    link: "https://leetcode.com/problems/implement-trie-prefix-tree/",
+    isSilicon100: true,
+    isIron1000: false,
+  },
+
+  // --- TOPIC: SEGMENT TREE ---
+  {
+    id: "segment-tree-range-sum",
+    title: "Range Sum Query - Mutable",
+    difficulty: "Medium",
+    topic: "Segment Tree",
+    link: "https://leetcode.com/problems/range-sum-query-mutable/",
+    isSilicon100: false,
+    isIron1000: false,
+  },
 ];
