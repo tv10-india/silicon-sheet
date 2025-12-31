@@ -60,7 +60,7 @@ export default function Header() {
 
           {/* 2. THE SHEET */}
           <Link 
-            href="/" 
+            href="/sheet" 
             className={cn(
               "flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium transition-all",
               pathname === "/" 
