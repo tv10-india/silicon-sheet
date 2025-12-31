@@ -85,21 +85,18 @@ export default function Footer() {
         {/* BOTTOM BAR */}
         <div className="pt-8 border-t border-slate-200 dark:border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-500">
-            © 2024 Silicon Stories. 100% Free & Open Source.
+            © 2025 Silicon Stories. 100% Free & Open Source.
           </p>
           
           <div className="flex items-center gap-6">
             <a 
-              href="mailto:your@email.com?subject=Bug Report - Silicon Sheet" 
+              href="mailto:vedantnarayan01@gmail.com?subject=Bug Report - Silicon Sheet" 
               className="flex items-center gap-2 text-xs text-slate-500 hover:text-red-500 transition-colors"
             >
               <Bug className="w-3 h-3" />
               Report a Bug
             </a>
             
-            <a href="https://github.com/yourusername/silicon-sheet" target="_blank" className="text-slate-500 hover:text-black dark:hover:text-white transition-colors">
-              <Github className="w-4 h-4" />
-            </a>
           </div>
         </div>
       </div>
