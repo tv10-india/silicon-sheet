@@ -35,7 +35,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a 
-                  href="https://t.me/your_telegram_link" 
+                  href="https://t.me/GetHired01" 
                   target="_blank"
                   className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
                 >
@@ -45,7 +45,7 @@ export default function Footer() {
               </li>
               <li>
                 <a 
-                  href="https://youtube.com/@SiliconStories" 
+                  href="https://www.youtube.com/@Silicon_Stories_Official" 
                   target="_blank"
                   className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                 >
@@ -61,19 +61,19 @@ export default function Footer() {
             <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-4">Connect</h3>
             <ul className="space-y-3">
               <li>
-                <a href="https://linkedin.com/in/your_profile" target="_blank" className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-blue-700 dark:hover:text-white transition-colors">
+                <a href="https://www.linkedin.com/in/vedant-narayan" target="_blank" className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-blue-700 dark:hover:text-white transition-colors">
                   <Linkedin className="w-4 h-4" />
                   <span>LinkedIn</span>
                 </a>
               </li>
               <li>
-                <a href="https://instagram.com/your_profile" target="_blank" className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-pink-600 dark:hover:text-pink-400 transition-colors">
+                <a href="http://instagram.com/v.narayaan/" target="_blank" className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-pink-600 dark:hover:text-pink-400 transition-colors">
                   <Instagram className="w-4 h-4" />
                   <span>Instagram</span>
                 </a>
               </li>
               <li>
-                <a href="mailto:your@email.com" className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors">
+                <a href="mailto:vedantnarayan01@gmail.com" className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors">
                   <Mail className="w-4 h-4" />
                   <span>Contact Me</span>
                 </a>
